@@ -11,6 +11,8 @@ You could use every device with Python and a Browser installed (you need the Bro
 
 How To:
 
+install Python
+
 install Spotipy https://github.com/plamere/spotipy
 
 Create an Account at https://developer.spotify.com/dashboard/
