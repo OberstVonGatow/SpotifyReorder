@@ -2,8 +2,12 @@
 Reorder Spotify Playlists
 
 With this script i reorder my playlists - latest added track on top.
+
 I run this script from a raspberry pi every hour.
+
 You could use every device with Python and a Browser installed (you need the Browser only once for login).
+
+
 
 How To:
 
