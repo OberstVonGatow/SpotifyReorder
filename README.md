@@ -36,3 +36,18 @@ Browser should open where you can login
 -> you should get redirected to http://localhost/.......
 
 Copy the whole URL and Paste in CMD Windows
+
+
+
+Notes:
+I run the Script with cron every 10 Minutes. (https://www.stetic.com/developer/cronjob-linux-tutorial-und-crontab-syntax/)
+
+Constin-Nox (https://github.com/Costin-Nox) mentioned, that if you run the script with different user you have to take care of the cached token. If you run the Script it will store a .cache-username in the folder you run the script in.
+You could modify the Script and add a different cache path like this:
+
+token = util.prompt_for_user_token(username,scope,client_id = client_id,client_secret = client_secret,redirect_uri='http://localhost/', cache_path='/your/file/path/.cache-username')  
+
+docs:
+https://github.com/plamere/spotipy/blob/master/spotipy/util.py
+
+
