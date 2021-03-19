@@ -12,7 +12,7 @@ def check_tracks(results, first_date, counter):
             track = item['track']
             print(counter, track['artists'][0]['name'], track['name'])
             sp.user_playlist_reorder_tracks(
-                username, playlist['id'], counter, 1, 0)
+                username, playlist['id'], counter, 0, 1)
             sleep(0.5)
             first_date = temp_date
         counter += 1
