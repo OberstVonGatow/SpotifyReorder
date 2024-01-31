@@ -5,7 +5,7 @@ import spotipy.util as util
 from time import sleep
 
 
-def check_tracks(results, first_date, counter):
+def check_tracks(sp, results, first_date, counter):
     for i, item in enumerate(results['items']):
         temp_date = item['added_at']
         if temp_date > first_date:
@@ -43,15 +43,15 @@ if __name__ == '__main__':
         while playlists:
             for i, playlist in enumerate(playlists['items']):
                 if playlist['owner']['id'] == username and playlist['name'] in playlistarray:
-                    results = sp.user_playlist(
-                        username, playlist['id'], fields="tracks,next")
-                    first_date = results['tracks']['items'][0]['added_at']
-                    tracks = results['tracks']
+                    
+                    results = sp.user_playlist_tracks(username, playlist['id'], limit=100)
+                    first_date = results['items'][0]['added_at']
+                    tracks = results
                     counter = 0
-                    counter = check_tracks(tracks, first_date, counter)
+                    counter = check_tracks(sp, tracks, first_date, counter)
                     while tracks['next']:
                         tracks = sp.next(tracks)
-                        counter = check_tracks(tracks, first_date, counter)
+                        counter = check_tracks(sp, tracks, first_date, counter)
 
             if playlists['next']:
                 playlists = sp.next(playlists)
